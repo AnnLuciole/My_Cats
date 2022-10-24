@@ -1,13 +1,19 @@
 package sql.demo.repository;
 
 import sql.demo.StockExchangeDB;
+import sql.demo.model.BaseModel;
 
 import java.io.Closeable;
 import java.sql.*;
 
 // Сервисный родительский класс, куда вынесена реализация общих действий для всех таблиц
-public class BaseTable implements Closeable {
-    Connection connection;  // JDBC-соединение для работы с таблицей
+public class BaseTable implements Closeable, TableOperations {
+    Connection connection; // JDBC-соединение для работы с таблицей
+    Statement statement;
+    ResultSet resultSet;
+
+    PreparedStatement preparedStatement;
+
     String tableName;       // Имя таблицы
 
     BaseTable(String tableName) throws SQLException { // Для реальной таблицы передадим в конструктор её имя
@@ -18,21 +24,21 @@ public class BaseTable implements Closeable {
     // Закрытие
     public void close() {
         try {
-            if (connection != null && !connection.isClosed())
-                connection.close();
+            connection.close();
+            resultSet.close();
+            statement.close();
         } catch (SQLException e) {
+            System.out.println("Ошибка закрытия SQL соединения!");
+        } catch (NullPointerException n) {
             System.out.println("Ошибка закрытия SQL соединения!");
         }
     }
 
     // Выполнить SQL команду без параметров в СУБД, по завершению выдать сообщение в консоль
-    void executeSqlStatement(String sql, String description) throws SQLException {
+    void executeSqlStatement(PreparedStatement preparedStatement) throws SQLException {
         reopenConnection(); // переоткрываем (если оно неактивно) соединение с СУБД
-        Statement statement = connection.createStatement();  // Создаем statement для выполнения sql-команд
-        statement.execute(sql); // Выполняем statement - sql команду
-        statement.close();      // Закрываем statement для фиксации изменений в СУБД
-        if (description != null)
-            System.out.println(description);
+        preparedStatement.execute(); // Выполняем statement - sql команду
+        close();      // Закрываем statement для фиксации изменений в СУБД
     }
 
     // Активизация соединения с СУБД, если оно не активно.
@@ -41,4 +47,15 @@ public class BaseTable implements Closeable {
             connection = StockExchangeDB.getConnection();
         }
     }
+
+    @Override
+    public void addData(BaseModel baseModel) throws SQLException {}
+
+    @Override
+    public boolean isExistsInDB(BaseModel baseModel) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public void createTable() throws SQLException {}
 }

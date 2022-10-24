@@ -5,8 +5,7 @@ public class CatType extends BaseModel {
 
     public CatType(){}
 
-    public CatType(int id, String type) {
-        super(id);
+    public CatType(String type) {
         this.type = type;
     }
 

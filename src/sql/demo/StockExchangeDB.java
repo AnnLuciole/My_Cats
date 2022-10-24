@@ -2,6 +2,8 @@ package sql.demo;
 
 import java.sql.*;
 
+import sql.demo.model.BaseModel;
+import sql.demo.model.CatType;
 import sql.demo.repository.*;
 
 public class StockExchangeDB {
@@ -31,11 +33,21 @@ public class StockExchangeDB {
         types.createTable();
     }
 
+    public void addDataInTables() throws SQLException {
+        BaseModel baseModel = new CatType("Абиссинская кошка");
+        types.addData(baseModel);
+        baseModel = new CatType("Австралийский мист");
+        types.addData(baseModel);
+        baseModel = new CatType("Американская жесткошерстная");
+        types.addData(baseModel);
+    }
+
 
     public static void main(String[] args) {
         try{
             StockExchangeDB stockExchangeDB = new StockExchangeDB();
             stockExchangeDB.createTables();
+            stockExchangeDB.addDataInTables();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Ошибка SQL !");
