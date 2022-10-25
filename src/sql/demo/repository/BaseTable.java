@@ -58,4 +58,8 @@ public class BaseTable implements Closeable, TableOperations {
 
     @Override
     public void createTable() throws SQLException {}
+
+    @Override
+    public void addAllTypes(String[] allTypes) throws SQLException {
+    }
 }

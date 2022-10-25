@@ -2,6 +2,7 @@ package sql.demo;
 
 import java.sql.*;
 
+import sql.demo.dataForTables.DataForCatTypes;
 import sql.demo.model.BaseModel;
 import sql.demo.model.CatType;
 import sql.demo.repository.*;
@@ -40,6 +41,7 @@ public class StockExchangeDB {
         types.addData(baseModel);
         baseModel = new CatType("Американская жесткошерстная");
         types.addData(baseModel);
+        types.addAllTypes(DataForCatTypes.getTypes());
     }
 
 

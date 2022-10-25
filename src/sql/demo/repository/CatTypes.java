@@ -53,4 +53,14 @@ public class CatTypes extends BaseTable implements TableOperations{
         resultSet = preparedStatement.executeQuery();
         return resultSet.next();
     }
+
+    @Override
+    public void addAllTypes(String[] allTypes) throws SQLException {
+        for (String type:allTypes) {
+            CatType catType = new CatType(type);
+            if (!isExistsInDB(catType)) {
+                addData(catType);
+            }
+        }
+    }
 }
