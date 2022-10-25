@@ -44,12 +44,22 @@ public class StockExchangeDB {
         types.addAllTypes(DataForCatTypes.getTypes());
     }
 
+    public void deleteDataFromTables() throws SQLException {
+        types.deleteData(54);
+    }
+
+    public void updateDataInTables() throws SQLException {
+        types.updateData(7, "Дворовая кошка");
+    }
+
 
     public static void main(String[] args) {
         try{
             StockExchangeDB stockExchangeDB = new StockExchangeDB();
             stockExchangeDB.createTables();
             stockExchangeDB.addDataInTables();
+            stockExchangeDB.deleteDataFromTables();
+            stockExchangeDB.updateDataInTables();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Ошибка SQL !");

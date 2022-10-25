@@ -10,5 +10,8 @@ public interface TableOperations {
     void addData(BaseModel baseModel) throws SQLException; //добавление данных в таблицу
     void addAllTypes(String[] allTypes) throws SQLException; //добавление данных из массива
 
+    void deleteData(int id) throws SQLException; //deleting data from database
+    void updateData(int id, String newType) throws SQLException; //updating data in database
+
     boolean isExistsInDB(BaseModel baseModel) throws SQLException;
 }

@@ -30,7 +30,7 @@ public class BaseTable implements Closeable, TableOperations {
         } catch (SQLException e) {
             System.out.println("Ошибка закрытия SQL соединения!");
         } catch (NullPointerException n) {
-            System.out.println("Ошибка закрытия SQL соединения!");
+            System.out.println("Ошибка закрытия SQL соединения! Соединение было закрыто ранее");
         }
     }
 
@@ -61,5 +61,15 @@ public class BaseTable implements Closeable, TableOperations {
 
     @Override
     public void addAllTypes(String[] allTypes) throws SQLException {
+    }
+
+    @Override
+    public void deleteData(int id) throws SQLException {
+
+    }
+
+    @Override
+    public void updateData(int id, String newType) throws SQLException {
+
     }
 }

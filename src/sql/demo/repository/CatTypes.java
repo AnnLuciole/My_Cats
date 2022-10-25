@@ -63,4 +63,23 @@ public class CatTypes extends BaseTable implements TableOperations{
             }
         }
     }
+
+    @Override
+    public void deleteData(int id) throws SQLException {
+        super.reopenConnection();
+        sql = "DELETE FROM types WHERE id = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        preparedStatement.executeUpdate();
+    }
+
+    @Override
+    public void updateData(int id, String newType) throws SQLException {
+        super.reopenConnection();
+        sql = "UPDATE types SET type = ? WHERE id = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, newType);
+        preparedStatement.setInt(2, id);
+        preparedStatement.executeUpdate();
+    }
 }
