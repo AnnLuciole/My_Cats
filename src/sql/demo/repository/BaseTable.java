@@ -28,17 +28,10 @@ public class BaseTable implements Closeable, TableOperations {
             resultSet.close();
             statement.close();
         } catch (SQLException e) {
-            System.out.println("Ошибка закрытия SQL соединения!");
+            System.out.println("Error of SQL!");
         } catch (NullPointerException n) {
-            System.out.println("Ошибка закрытия SQL соединения! Соединение было закрыто ранее");
+            System.out.println("Error of SQL! NullPointerException");
         }
-    }
-
-    // Выполнить SQL команду без параметров в СУБД, по завершению выдать сообщение в консоль
-    void executeSqlStatement(PreparedStatement preparedStatement) throws SQLException {
-        reopenConnection(); // переоткрываем (если оно неактивно) соединение с СУБД
-        preparedStatement.execute(); // Выполняем statement - sql команду
-        close();      // Закрываем statement для фиксации изменений в СУБД
     }
 
     // Активизация соединения с СУБД, если оно не активно.

@@ -52,19 +52,26 @@ public class StockExchangeDB {
         types.updateData(7, "Дворовая кошка");
     }
 
+    public void getDataFromTables() throws SQLException {
+        System.out.println(types.getType(10));
+        types.getTypeWhere("id < 15");
+        types.getAllTypes();
+    }
+
 
     public static void main(String[] args) {
         try{
             StockExchangeDB stockExchangeDB = new StockExchangeDB();
-            stockExchangeDB.createTables();
-            stockExchangeDB.addDataInTables();
-            stockExchangeDB.deleteDataFromTables();
-            stockExchangeDB.updateDataInTables();
+            //stockExchangeDB.createTables();
+            //stockExchangeDB.addDataInTables();
+            //stockExchangeDB.deleteDataFromTables();
+            //stockExchangeDB.updateDataInTables();
+            stockExchangeDB.getDataFromTables();
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Ошибка SQL !");
+            System.out.println("Error of SQL!");
         } catch (ClassNotFoundException e) {
-            System.out.println("JDBC драйвер для СУБД не найден!");
+            System.out.println("JDBC not found!");
         }
     }
 }
