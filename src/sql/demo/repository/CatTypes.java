@@ -10,8 +10,8 @@ import java.sql.SQLException;
 
 public class CatTypes extends BaseTable {
 
-    String sql;
-    PreparedStatement preparedStatement;
+    static String sql;
+    static PreparedStatement preparedStatement;
 
     public CatTypes() throws SQLException {
         super("types");
@@ -25,13 +25,14 @@ public class CatTypes extends BaseTable {
         Connection connection = StockExchangeDB.getConnection();
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeUpdate();
+        super.close();
     }
 
     @Override
     public void addData(BaseModel baseModel) throws SQLException {
         CatType type = (CatType) baseModel;
-        super.reopenConnection();
         if (!isExistsInDB(type)) {
+            super.reopenConnection();
             String typeOfCat = type.getType();
             sql = "INSERT INTO types (type) VALUES (?); ";
             preparedStatement = connection.prepareStatement(sql);
@@ -40,6 +41,7 @@ public class CatTypes extends BaseTable {
         } else {
             System.out.println("This data already exist in database");
         }
+        super.close();
     }
 
     @Override
@@ -51,7 +53,9 @@ public class CatTypes extends BaseTable {
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, typeOfCat);
         resultSet = preparedStatement.executeQuery();
-        return resultSet.next();
+        boolean isExistsInDB = resultSet.next();
+        super.close();
+        return isExistsInDB;
     }
 
     @Override
@@ -71,6 +75,7 @@ public class CatTypes extends BaseTable {
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         preparedStatement.executeUpdate();
+        super.close();
     }
 
     @Override
@@ -81,6 +86,7 @@ public class CatTypes extends BaseTable {
         preparedStatement.setString(1, newType);
         preparedStatement.setInt(2, id);
         preparedStatement.executeUpdate();
+        super.close();
     }
 
     public String getType(int id) throws SQLException {
@@ -89,7 +95,20 @@ public class CatTypes extends BaseTable {
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         resultSet = preparedStatement.executeQuery();
-        return resultSet.getString("type");
+        String catType = resultSet.getString("type");
+        super.close();
+        return catType;
+    }
+
+    public int getId(String type) throws SQLException {
+        reopenConnection();
+        sql = "SELECT id FROM types WHERE type = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, type);
+        resultSet = preparedStatement.executeQuery();
+        int id = resultSet.getInt("id");
+        super.close();
+        return id;
     }
 
     public void getTypeWhere(String where) throws SQLException {
@@ -100,6 +119,7 @@ public class CatTypes extends BaseTable {
         while (resultSet.next()) {
             System.out.println(resultSet.getString("type"));
         }
+        super.close();
     }
 
     public void getAllTypes() throws SQLException {
@@ -110,5 +130,6 @@ public class CatTypes extends BaseTable {
         while (resultSet.next()) {
             System.out.println(resultSet.getString("type"));
         }
+        super.close();
     }
 }

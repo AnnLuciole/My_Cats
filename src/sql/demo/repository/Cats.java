@@ -1,6 +1,9 @@
 package sql.demo.repository;
 
 import sql.demo.StockExchangeDB;
+import sql.demo.model.BaseModel;
+import sql.demo.model.Cat;
+import sql.demo.model.CatType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +13,8 @@ public class Cats extends BaseTable{
 
     String sql;
     PreparedStatement preparedStatement;
+
+    CatTypes catTypes;
 
     public Cats() throws SQLException {
         super("cats");
@@ -26,5 +31,57 @@ public class Cats extends BaseTable{
         Connection connection = StockExchangeDB.getConnection();
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeUpdate();
+        super.close();
+    }
+
+    public void insertCat(String name, String type, int age, double weight) throws SQLException {
+        Cat cat = new Cat(name, age, weight);
+        CatType catType = new CatType(type);
+        catTypes = new CatTypes();
+        catTypes.addData(catType);
+        cat.setTypeId(catTypes.getId(type));
+        addData(cat);
+    }
+
+    @Override
+    public boolean isExistsInDB(BaseModel baseModel) throws SQLException {
+        Cat cat = (Cat) baseModel;
+        String name = cat.getName();
+        int age = cat.getAge();
+        double weight = cat.getWeight();
+        int typeId = cat.getTypeId();
+        super.reopenConnection();
+        sql = "SELECT * FROM cats WHERE name = ? AND age = ? AND weight = ? AND typeId = ?";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, name);
+        preparedStatement.setInt(2, age);
+        preparedStatement.setDouble(3, weight);
+        preparedStatement.setInt(4, typeId);
+        resultSet = preparedStatement.executeQuery();
+        boolean isExistsInDB = resultSet.next();
+        super.close();
+        return isExistsInDB;
+    }
+
+    @Override
+    public void addData(BaseModel baseModel) throws SQLException {
+        Cat cat = (Cat) baseModel;
+        if (!isExistsInDB(cat)) {
+            reopenConnection();
+            String name = cat.getName();
+            int age = cat.getAge();
+            double weight = cat.getWeight();
+            int typeId = cat.getTypeId();
+            sql = "INSERT INTO cats (name, typeId, age, weight) VALUES (?, ?, ?, ?); ";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, typeId);
+            preparedStatement.setInt(3, age);
+            preparedStatement.setDouble(4, weight);
+            preparedStatement.executeUpdate();
+        } else {
+            System.out.println("This data already exist in database");
+        }
+        super.close();
     }
 }

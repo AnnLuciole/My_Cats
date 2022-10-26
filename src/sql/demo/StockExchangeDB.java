@@ -38,13 +38,9 @@ public class StockExchangeDB {
     }
 
     public void addDataInTables() throws SQLException {
-        BaseModel baseModel = new CatType("Абиссинская кошка");
-        types.addData(baseModel);
-        baseModel = new CatType("Австралийский мист");
-        types.addData(baseModel);
-        baseModel = new CatType("Американская жесткошерстная");
-        types.addData(baseModel);
-        types.addAllTypes(DataForCatTypes.getTypes());
+        cats.insertCat("Нильс", "Дворовая кошка", 3, 10);
+        cats.insertCat("Васька", "Наполеон", 3, 10);
+        cats.insertCat("Васька", "Кудрявый кот", 3, 10);
     }
 
     public void deleteDataFromTables() throws SQLException {
@@ -66,7 +62,7 @@ public class StockExchangeDB {
         try{
             StockExchangeDB stockExchangeDB = new StockExchangeDB();
             stockExchangeDB.createTables();
-            //stockExchangeDB.addDataInTables();
+            stockExchangeDB.addDataInTables();
             //stockExchangeDB.deleteDataFromTables();
             //stockExchangeDB.updateDataInTables();
             //stockExchangeDB.getDataFromTables();

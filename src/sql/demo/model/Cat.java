@@ -17,6 +17,12 @@ public class Cat extends BaseModel {
         this.weight = weight;
     }
 
+    public Cat(String name, int age, double weight) {
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+    }
+
     public void setTypeId(int typeId) {
         this.typeId = typeId;
     }
@@ -39,5 +45,13 @@ public class Cat extends BaseModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 }
