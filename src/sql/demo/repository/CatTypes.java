@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class CatTypes extends BaseTable implements TableOperations{
+public class CatTypes extends BaseTable {
 
     String sql;
     PreparedStatement preparedStatement;

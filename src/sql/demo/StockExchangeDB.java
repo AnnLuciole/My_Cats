@@ -15,6 +15,7 @@ public class StockExchangeDB {
     public static final String DB_Driver = "org.sqlite.JDBC";
 
     CatTypes types;
+    Cats cats;
 
     // Получить новое соединение с БД
     public static Connection getConnection() throws SQLException {
@@ -27,11 +28,13 @@ public class StockExchangeDB {
         connection = StockExchangeDB.getConnection();
         // Инициализируем таблицы
         types = new CatTypes();
+        cats = new Cats();
     }
 
     // Создание всех таблиц и ключей между ними
     public void createTables() throws SQLException {
-        types.createTable();
+        //types.createTable();
+        cats.createTable();
     }
 
     public void addDataInTables() throws SQLException {
@@ -53,8 +56,8 @@ public class StockExchangeDB {
     }
 
     public void getDataFromTables() throws SQLException {
-        System.out.println(types.getType(10));
-        types.getTypeWhere("id < 15");
+        System.out.println(types.getType(17));
+        types.getTypeWhere("id < 12");
         types.getAllTypes();
     }
 
@@ -62,11 +65,11 @@ public class StockExchangeDB {
     public static void main(String[] args) {
         try{
             StockExchangeDB stockExchangeDB = new StockExchangeDB();
-            //stockExchangeDB.createTables();
+            stockExchangeDB.createTables();
             //stockExchangeDB.addDataInTables();
             //stockExchangeDB.deleteDataFromTables();
             //stockExchangeDB.updateDataInTables();
-            stockExchangeDB.getDataFromTables();
+            //stockExchangeDB.getDataFromTables();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Error of SQL!");
