@@ -1,11 +1,8 @@
 package sql.demo.repository;
 
 import sql.demo.StockExchangeDB;
-import sql.demo.dataForTables.DataForCatTypes;
-import sql.demo.dataForTables.DataForCats;
-import sql.demo.model.BaseModel;
-import sql.demo.model.Cat;
-import sql.demo.model.CatType;
+import sql.demo.dataForTables.*;
+import sql.demo.model.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -124,6 +121,53 @@ public class Cats extends BaseTable{
         sql = "UPDATE cats SET " + set + " WHERE " + where;
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeUpdate();
+        super.close();
+    }
+
+    public Cat getCat(int id) throws SQLException {
+        reopenConnection();
+        sql = "SELECT * FROM cats WHERE id = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        resultSet = preparedStatement.executeQuery();
+        String name = resultSet.getString("name");
+        int typeId = resultSet.getInt("typeId");
+        int age = resultSet.getInt("age");
+        double weight = resultSet.getDouble("weight");
+        Cat cat = new Cat(name, typeId, age, weight);
+        super.close();
+        return cat;
+    }
+
+    public void getCatWhere(String where) throws SQLException {
+        reopenConnection();
+        sql = "SELECT * FROM cats WHERE " + where;
+        preparedStatement = connection.prepareStatement(sql);
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            String name = resultSet.getString("name");
+            int typeId = resultSet.getInt("typeId");
+            int age = resultSet.getInt("age");
+            double weight = resultSet.getDouble("weight");
+            Cat cat = new Cat(name, typeId, age, weight);
+            System.out.println(cat);
+        }
+        super.close();
+    }
+
+    public void getAllCats() throws SQLException {
+        reopenConnection();
+        sql = "SELECT * FROM cats";
+        preparedStatement = connection.prepareStatement(sql);
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            String name = resultSet.getString("name");
+            int typeId = resultSet.getInt("typeId");
+            int age = resultSet.getInt("age");
+            double weight = resultSet.getDouble("weight");
+            Cat cat = new Cat(name, typeId, age, weight);
+            System.out.println(cat);
+        }
         super.close();
     }
 }

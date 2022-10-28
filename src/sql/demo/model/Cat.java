@@ -54,4 +54,8 @@ public class Cat extends BaseModel {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+    @Override
+    public String toString() {
+        return "Name: " + name + ". Type ID: " + typeId + ". Age: " + age + ". Weight: " + weight;
+    }
 }

@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b90ec458-481c-4b39-9bac-4b830534b476" name="Changes" comment="Added random metod addMoreCats for new table cats.">
+    <list default="true" id="b90ec458-481c-4b39-9bac-4b830534b476" name="Changes" comment="Added deleteData, updateData metods for table cats.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/BaseTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/repository/BaseTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/StockExchangeDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/StockExchangeDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/model/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/model/Cat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/CatTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/repository/CatTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/Cats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/repository/Cats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/TableOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/repository/TableOperations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666938205191</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added deleteData, updateData metods for table cats.">
+      <created>1666941111665</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1666941111665</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,18 +168,8 @@
     <MESSAGE value="Added Cats and Cat Objects." />
     <MESSAGE value="Added metods for new table cats." />
     <MESSAGE value="Added random metod addMoreCats for new table cats." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added random metod addMoreCats for new table cats." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sql/demo/repository/Cats.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added deleteData, updateData metods for table cats." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added deleteData, updateData metods for table cats." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

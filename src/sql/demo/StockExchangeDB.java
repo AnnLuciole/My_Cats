@@ -46,24 +46,25 @@ public class StockExchangeDB {
     }
 
     public void updateDataInTables() throws SQLException {
-        types.updateData(7, "Дворовая кошка");
+        //types.updateData(7, "Дворовая кошка");
     }
 
     public void getDataFromTables() throws SQLException {
-        System.out.println(types.getType(17));
-        types.getTypeWhere("id < 12");
-        types.getAllTypes();
+        //System.out.println(types.getType(17));
+        //types.getTypeWhere("id < 12");
+        //types.getAllTypes();
+        cats.getCatWhere("id < 3");
     }
 
 
     public static void main(String[] args) {
         try{
             StockExchangeDB stockExchangeDB = new StockExchangeDB();
-            stockExchangeDB.createTables();
-            stockExchangeDB.addDataInTables();
+            //stockExchangeDB.createTables();
+            //stockExchangeDB.addDataInTables();
             //stockExchangeDB.deleteDataFromTables();
             //stockExchangeDB.updateDataInTables();
-            //stockExchangeDB.getDataFromTables();
+            stockExchangeDB.getDataFromTables();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Error of SQL!");
