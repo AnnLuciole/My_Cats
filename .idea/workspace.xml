@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b90ec458-481c-4b39-9bac-4b830534b476" name="Changes" comment="Added deleteData, updateData metods for table cats.">
+    <list default="true" id="b90ec458-481c-4b39-9bac-4b830534b476" name="Changes" comment=" Нужно доделать">
+      <change afterPath="$PROJECT_DIR$/src/sql/demo/config/DBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sql/demo/config/SQLiteConnectionConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sql/demo/dataBases/DBMyCats.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sql/demo/dataBases/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/StockExchangeDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/StockExchangeDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/model/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/model/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/CatTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/repository/CatTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/Cats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/repository/Cats.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,13 +19,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -145,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666941111665</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added getCat, getCatWhere and getAllCats metods for table cats.">
+      <created>1666944574878</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1666944574878</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -169,7 +181,9 @@
     <MESSAGE value="Added metods for new table cats." />
     <MESSAGE value="Added random metod addMoreCats for new table cats." />
     <MESSAGE value="Added deleteData, updateData metods for table cats." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added deleteData, updateData metods for table cats." />
+    <MESSAGE value="Added getCat, getCatWhere and getAllCats metods for table cats." />
+    <MESSAGE value=" Нужно доделать" />
+    <option name="LAST_COMMIT_MESSAGE" value=" Нужно доделать" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
