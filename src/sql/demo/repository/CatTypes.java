@@ -79,12 +79,30 @@ public class CatTypes extends BaseTable {
     }
 
     @Override
+    public void deleteData(String where) throws SQLException {
+        reopenConnection();
+        sql = "DELETE FROM types WHERE " + where;
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.executeUpdate();
+        super.close();
+    }
+
+    @Override
     public void updateData(int id, String newType) throws SQLException {
         reopenConnection();
         sql = "UPDATE types SET type = ? WHERE id = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, newType);
         preparedStatement.setInt(2, id);
+        preparedStatement.executeUpdate();
+        super.close();
+    }
+
+    @Override
+    public void updateData(int id, String set, String where) throws SQLException {
+        reopenConnection();
+        sql = "UPDATE types SET " + set + " WHERE " + where;
+        preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeUpdate();
         super.close();
     }

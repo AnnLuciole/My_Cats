@@ -98,4 +98,32 @@ public class Cats extends BaseTable{
             n -= 1;
         }
     }
+
+    @Override
+    public void deleteData(int id) throws SQLException {
+        reopenConnection();
+        sql = "DELETE FROM cats WHERE id = ?;";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        preparedStatement.executeUpdate();
+        super.close();
+    }
+
+    @Override
+    public void deleteData(String where) throws SQLException {
+        reopenConnection();
+        sql = "DELETE FROM cats WHERE " + where;
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.executeUpdate();
+        super.close();
+    }
+
+    @Override
+    public void updateData(int id, String set, String where) throws SQLException {
+        reopenConnection();
+        sql = "UPDATE cats SET " + set + " WHERE " + where;
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.executeUpdate();
+        super.close();
+    }
 }

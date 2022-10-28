@@ -62,7 +62,14 @@ public class BaseTable implements Closeable, TableOperations {
     }
 
     @Override
+    public void deleteData(String where) throws SQLException{}
+
+    @Override
     public void updateData(int id, String newType) throws SQLException {
 
+    }
+
+    @Override
+    public void updateData(int id, String set, String where) throws SQLException {
     }
 }
