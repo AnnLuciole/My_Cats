@@ -124,7 +124,14 @@ public class DataForCats {
     };
 
     public static String getRandom() {
-        String randomName = names[(int) (Math.random() * names.length)];
-        return randomName;
+        return names[(int) (Math.random() * names.length)];
+    }
+
+    public static String[] getNames() {
+        return names;
+    }
+
+    public static void setNames(String[] names) {
+        DataForCats.names = names;
     }
 }

@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b90ec458-481c-4b39-9bac-4b830534b476" name="Changes" comment="Added metods for new table cats.">
-      <change afterPath="$PROJECT_DIR$/src/sql/demo/dataForTables/DataForCats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/StockExchangeDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/StockExchangeDB.java" afterDir="false" />
+    <list default="true" id="b90ec458-481c-4b39-9bac-4b830534b476" name="Changes" comment="Added random metod addMoreCats for new table cats.">
       <change beforePath="$PROJECT_DIR$/src/sql/demo/dataForTables/DataForCatTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/dataForTables/DataForCatTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/Cats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/repository/Cats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/dataForTables/DataForCats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/dataForTables/DataForCats.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +150,8 @@
     <MESSAGE value="Added different getters in CatTypes." />
     <MESSAGE value="Added Cats and Cat Objects." />
     <MESSAGE value="Added metods for new table cats." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added metods for new table cats." />
+    <MESSAGE value="Added random metod addMoreCats for new table cats." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added random metod addMoreCats for new table cats." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
