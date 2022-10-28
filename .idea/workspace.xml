@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b90ec458-481c-4b39-9bac-4b830534b476" name="Changes" comment="Added Cats and Cat Objects.">
+    <list default="true" id="b90ec458-481c-4b39-9bac-4b830534b476" name="Changes" comment="Added metods for new table cats.">
+      <change afterPath="$PROJECT_DIR$/src/sql/demo/dataForTables/DataForCats.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sql/demo/StockExchangeDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/StockExchangeDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/model/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/model/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/CatTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/repository/CatTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/dataForTables/DataForCatTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/dataForTables/DataForCatTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/Cats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/repository/Cats.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +20,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -40,14 +40,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Manager/IdeaProjects/Cats/Cats/lib/sqlite-jdbc-3.39.3.0.jar",
-    "settings.editor.selected.configurable": "File.Encoding"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Manager/IdeaProjects/Cats/Cats/lib/sqlite-jdbc-3.39.3.0.jar&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Manager\IdeaProjects\Cats\Cats\lib" />
@@ -124,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666765538687</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added metods for new table cats.">
+      <created>1666788033926</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1666788033926</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,7 +152,8 @@
     <MESSAGE value="Added updateData and deleteData in CatTypes." />
     <MESSAGE value="Added different getters in CatTypes." />
     <MESSAGE value="Added Cats and Cat Objects." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Cats and Cat Objects." />
+    <MESSAGE value="Added metods for new table cats." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added metods for new table cats." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

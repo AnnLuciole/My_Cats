@@ -72,4 +72,9 @@ public class DataForCatTypes {
     public static void setTypes(String[] types) {
         DataForCatTypes.types = types;
     }
+
+    public static String getRandom() {
+        String randomType = types[(int) (Math.random()* types.length)];
+        return randomType;
+    }
 }

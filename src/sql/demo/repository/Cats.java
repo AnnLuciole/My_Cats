@@ -1,6 +1,8 @@
 package sql.demo.repository;
 
 import sql.demo.StockExchangeDB;
+import sql.demo.dataForTables.DataForCatTypes;
+import sql.demo.dataForTables.DataForCats;
 import sql.demo.model.BaseModel;
 import sql.demo.model.Cat;
 import sql.demo.model.CatType;
@@ -83,5 +85,17 @@ public class Cats extends BaseTable{
             System.out.println("This data already exist in database");
         }
         super.close();
+    }
+
+    public void addMoreCats(int n) throws SQLException {
+        while (n >= 0) {
+            double randomNumber = Math.random();
+            String name = DataForCats.getRandom();
+            int age = (int) (randomNumber * 25);
+            double weight = Math.ceil(randomNumber * 8 * 100) / 100;
+            String type = DataForCatTypes.getRandom();
+            insertCat(name, type, age, weight);
+            n -= 1;
+        }
     }
 }

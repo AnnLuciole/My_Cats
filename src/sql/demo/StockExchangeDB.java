@@ -2,9 +2,6 @@ package sql.demo;
 
 import java.sql.*;
 
-import sql.demo.dataForTables.DataForCatTypes;
-import sql.demo.model.BaseModel;
-import sql.demo.model.CatType;
 import sql.demo.repository.*;
 
 public class StockExchangeDB {
@@ -33,7 +30,7 @@ public class StockExchangeDB {
 
     // Создание всех таблиц и ключей между ними
     public void createTables() throws SQLException {
-        //types.createTable();
+        types.createTable();
         cats.createTable();
     }
 
@@ -41,6 +38,7 @@ public class StockExchangeDB {
         cats.insertCat("Нильс", "Дворовая кошка", 3, 10);
         cats.insertCat("Васька", "Наполеон", 3, 10);
         cats.insertCat("Васька", "Кудрявый кот", 3, 10);
+        cats.addMoreCats(5000);
     }
 
     public void deleteDataFromTables() throws SQLException {
