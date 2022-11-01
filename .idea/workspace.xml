@@ -5,11 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b90ec458-481c-4b39-9bac-4b830534b476" name="Changes" comment=" Нужно доделать">
-      <change afterPath="$PROJECT_DIR$/src/sql/demo/config/DBConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sql/demo/config/SQLiteConnectionConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sql/demo/dataBases/DBMyCats.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sql/demo/dataBases/DataBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sql/demo/DAO/BaseTableDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/StockExchangeDB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/config/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/config/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/config/SQLiteConnectionConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/config/SQLiteConnectionConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/dataBases/DBMyCats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/dataBases/DBMyCats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/dataBases/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/dataBases/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/model/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/entity/BaseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/model/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/entity/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/model/CatType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/entity/CatType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/BaseTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/CatTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/DAO/CatTypeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/Cats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/DAO/CatDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/TableOperations.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +59,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Manager/IdeaProjects/Cats/Cats/lib/sqlite-jdbc-3.39.3.0.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Manager/Desktop/demo_to_anna&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
   }
 }</component>
@@ -58,7 +68,7 @@
       <recent name="C:\Users\Manager\IdeaProjects\Cats\Cats\lib" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Unnamed">
     <configuration name="StockExchangeDB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sql.demo.StockExchangeDB" />
       <module name="Cats" />
@@ -72,6 +82,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Cats" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.StockExchangeDB" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.StockExchangeDB" />
@@ -157,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666944574878</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary=" Нужно доделать">
+      <created>1666962222623</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1666962222623</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

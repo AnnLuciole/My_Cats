@@ -1,55 +1,48 @@
-package sql.demo.repository;
+package sql.demo.DAO;
 
-import sql.demo.StockExchangeDB;
+import sql.demo.config.DBConnection;
 import sql.demo.dataForTables.*;
-import sql.demo.model.*;
+import sql.demo.entity.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Cats extends BaseTable{
+public class CatDAO extends BaseTableDAO {
 
-    String sql;
-    PreparedStatement preparedStatement;
+    CatTypeDAO catTypeDAO;
 
-    CatTypes catTypes;
-
-    public Cats() throws SQLException {
+    public CatDAO() {
         super("cats");
     }
 
-    @Override
-    public void createTable() throws SQLException {
+    public void createTable(DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "CREATE TABLE if not exists " + super.tableName +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
                 "name VARCHAR(20) NOT NULL, " +
                 "typeId INTEGER REFERENCES types (id) NOT NULL, " +
                 "age INTEGER NOT NULL, " +
                 "weight DOUBLE)";
-        Connection connection = StockExchangeDB.getConnection();
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeUpdate();
-        super.close();
+        dbConnection.close();
     }
 
-    public void insertCat(String name, String type, int age, double weight) throws SQLException {
+    public void insertCat(String name, String type, int age, double weight, DBConnection dbConnection) throws SQLException {
         Cat cat = new Cat(name, age, weight);
         CatType catType = new CatType(type);
-        catTypes = new CatTypes();
-        catTypes.addData(catType);
-        cat.setTypeId(catTypes.getId(type));
-        addData(cat);
+        catTypeDAO = new CatTypeDAO();
+        catTypeDAO.addData(catType, dbConnection);
+        cat.setTypeId(catTypeDAO.getId(type, dbConnection));
+        addData(cat, dbConnection);
     }
 
-    @Override
-    public boolean isExistsInDB(BaseModel baseModel) throws SQLException {
+    public boolean isExistsInDB(BaseModel baseModel, DBConnection dbConnection) throws SQLException {
         Cat cat = (Cat) baseModel;
         String name = cat.getName();
         int age = cat.getAge();
         double weight = cat.getWeight();
         int typeId = cat.getTypeId();
-        super.reopenConnection();
+        connection = dbConnection.open();
         sql = "SELECT * FROM cats WHERE name = ? AND age = ? AND weight = ? AND typeId = ?";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, name);
@@ -58,15 +51,14 @@ public class Cats extends BaseTable{
         preparedStatement.setInt(4, typeId);
         resultSet = preparedStatement.executeQuery();
         boolean isExistsInDB = resultSet.next();
-        super.close();
+        dbConnection.close();
         return isExistsInDB;
     }
 
-    @Override
-    public void addData(BaseModel baseModel) throws SQLException {
+    public void addData(BaseModel baseModel, DBConnection dbConnection) throws SQLException {
         Cat cat = (Cat) baseModel;
-        if (!isExistsInDB(cat)) {
-            reopenConnection();
+        if (!isExistsInDB(cat, dbConnection)) {
+            connection = dbConnection.open();
             String name = cat.getName();
             int age = cat.getAge();
             double weight = cat.getWeight();
@@ -81,51 +73,44 @@ public class Cats extends BaseTable{
         } else {
             System.out.println("This data already exist in database");
         }
-        super.close();
+        dbConnection.close();
     }
 
-    public void addMoreCats(int n) throws SQLException {
+    public void addMoreCats(int n, DBConnection dbConnection) throws SQLException {
         while (n >= 0) {
             double randomNumber = Math.random();
             String name = DataForCats.getRandom();
             int age = (int) (randomNumber * 25);
             double weight = Math.ceil(randomNumber * 8 * 100) / 100;
             String type = DataForCatTypes.getRandom();
-            insertCat(name, type, age, weight);
+            insertCat(name, type, age, weight, dbConnection);
             n -= 1;
         }
     }
 
-    @Override
-    public void deleteData(int id) throws SQLException {
-        reopenConnection();
-        sql = "DELETE FROM cats WHERE id = ?;";
-        preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, id);
-        preparedStatement.executeUpdate();
-        super.close();
+    public void deleteData(int id, DBConnection dbConnection) throws SQLException {
+        String where = "id = " + id;
+        deleteData(where, dbConnection);
     }
 
-    @Override
-    public void deleteData(String where) throws SQLException {
-        reopenConnection();
+    public void deleteData(String where, DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "DELETE FROM cats WHERE " + where;
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeUpdate();
-        super.close();
+        dbConnection.close();
     }
 
-    @Override
-    public void updateData(int id, String set, String where) throws SQLException {
-        reopenConnection();
+    public void updateData(int id, String set, String where, DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "UPDATE cats SET " + set + " WHERE " + where;
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeUpdate();
-        super.close();
+        dbConnection.close();
     }
 
-    public Cat getCat(int id) throws SQLException {
-        reopenConnection();
+    public Cat getCat(int id, DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "SELECT * FROM cats WHERE id = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
@@ -135,12 +120,12 @@ public class Cats extends BaseTable{
         int age = resultSet.getInt("age");
         double weight = resultSet.getDouble("weight");
         Cat cat = new Cat(name, typeId, age, weight);
-        super.close();
+        dbConnection.close();
         return cat;
     }
 
-    public void getCatWhere(String where) throws SQLException {
-        reopenConnection();
+    public void getCatWhere(String where, DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "SELECT * FROM cats WHERE " + where;
         preparedStatement = connection.prepareStatement(sql);
         resultSet = preparedStatement.executeQuery();
@@ -152,11 +137,11 @@ public class Cats extends BaseTable{
             Cat cat = new Cat(name, typeId, age, weight);
             System.out.println(cat);
         }
-        super.close();
+        dbConnection.close();
     }
 
-    public void getAllCats() throws SQLException {
-        reopenConnection();
+    public void getAllCats(DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "SELECT * FROM cats";
         preparedStatement = connection.prepareStatement(sql);
         resultSet = preparedStatement.executeQuery();
@@ -168,6 +153,6 @@ public class Cats extends BaseTable{
             Cat cat = new Cat(name, typeId, age, weight);
             System.out.println(cat);
         }
-        super.close();
+        dbConnection.close();
     }
 }

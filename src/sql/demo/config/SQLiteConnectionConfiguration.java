@@ -1,8 +1,5 @@
 package sql.demo.config;
 
-import sql.demo.dataBases.DBMyCats;
-import sql.demo.dataBases.DataBase;
-
 import java.sql.*;
 
 public class SQLiteConnectionConfiguration implements DBConnection {
@@ -10,24 +7,29 @@ public class SQLiteConnectionConfiguration implements DBConnection {
     Connection connection;
     ResultSet resultSet;
     PreparedStatement preparedStatement;
-    String DB_URL;
 
     public static final String DB_Driver = "org.sqlite.JDBC";
-
-    public SQLiteConnectionConfiguration(DataBase dataBase) {
-        this.DB_URL = DataBase.DB_URL;
-    }
+    public String DB_URL = "jdbc:sqlite:/C:/Users/Manager/IdeaProjects/Cats/Cats/db/My_cats.db";
 
     @Override
-    public Connection open() throws SQLException, ClassNotFoundException {
-        Class.forName(DB_Driver);
-        return DriverManager.getConnection(DB_URL);
+    public Connection open() throws SQLException {
+        try {
+            Class.forName(DB_Driver);
+            connection = DriverManager.getConnection(DB_URL);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Classpath not found");
+        }
+        return connection;
     }
 
     @Override
     public void close() throws SQLException {
-        connection.close();
-        resultSet.close();
-        preparedStatement.close();
+        try {
+            connection.close();
+            resultSet.close();
+            preparedStatement.close();
+        } catch (NullPointerException exception) {
+            System.out.println("NullPointerException.");
+        }
     }
 }

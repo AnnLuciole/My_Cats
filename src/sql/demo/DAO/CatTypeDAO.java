@@ -1,153 +1,138 @@
-package sql.demo.repository;
+package sql.demo.DAO;
 
-import sql.demo.StockExchangeDB;
-import sql.demo.model.BaseModel;
-import sql.demo.model.CatType;
+import sql.demo.config.DBConnection;
+import sql.demo.entity.BaseModel;
+import sql.demo.entity.CatType;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class CatTypes extends BaseTable {
+public class CatTypeDAO extends BaseTableDAO {
 
-    static String sql;
-    static PreparedStatement preparedStatement;
 
-    public CatTypes() throws SQLException {
+    public CatTypeDAO() {
         super("types");
     }
 
-    @Override
-    public void createTable() throws SQLException {
+    public void createTable(DBConnection dbConnection) throws SQLException {
+        Connection connection = dbConnection.open();
         sql = "CREATE TABLE if not exists " + super.tableName +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
                 "type VARCHAR(100) NOT NULL)";
-        Connection connection = StockExchangeDB.getConnection();
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeUpdate();
-        super.close();
+        dbConnection.close();
     }
 
-    @Override
-    public void addData(BaseModel baseModel) throws SQLException {
-        CatType type = (CatType) baseModel;
-        if (!isExistsInDB(type)) {
-            super.reopenConnection();
-            String typeOfCat = type.getType();
+    public void addData(BaseModel baseModel, DBConnection dbConnection) throws SQLException {
+        CatType catType = (CatType) baseModel;
+        if (!isExistsInDB(catType, dbConnection)) {
+            Connection connection = dbConnection.open();
+            String typeOfCat = catType.getType();
             sql = "INSERT INTO types (type) VALUES (?); ";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, typeOfCat);
             preparedStatement.executeUpdate();
+            dbConnection.close();
         } else {
             System.out.println("This data already exist in database");
         }
-        super.close();
     }
 
-    @Override
-    public boolean isExistsInDB(BaseModel baseModel) throws SQLException {
-        CatType type = (CatType) baseModel;
-        String typeOfCat = type.getType();
-        super.reopenConnection();
+    public boolean isExistsInDB(BaseModel baseModel, DBConnection dbConnection) throws SQLException {
+        CatType catType = (CatType) baseModel;
+        String typeOfCat = catType.getType();
+        Connection connection = dbConnection.open();
         sql = "SELECT * FROM types WHERE type = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, typeOfCat);
         resultSet = preparedStatement.executeQuery();
         boolean isExistsInDB = resultSet.next();
-        super.close();
+        dbConnection.close();
         return isExistsInDB;
     }
 
-    @Override
-    public void addAllTypes(String[] allTypes) throws SQLException {
+    public void addAllTypes(String[] allTypes, DBConnection dbConnection) throws SQLException {
         for (String type:allTypes) {
             CatType catType = new CatType(type);
-            if (!isExistsInDB(catType)) {
-                addData(catType);
+            if (!isExistsInDB(catType, dbConnection)) {
+                addData(catType, dbConnection);
             }
         }
     }
 
-    @Override
-    public void deleteData(int id) throws SQLException {
-        reopenConnection();
-        sql = "DELETE FROM types WHERE id = ?;";
-        preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, id);
-        preparedStatement.executeUpdate();
-        super.close();
+    public void deleteData(int id, DBConnection dbConnection) throws SQLException {
+        String where = "id = " + id;
+        deleteData(where, dbConnection);
     }
 
-    @Override
-    public void deleteData(String where) throws SQLException {
-        reopenConnection();
+    public void deleteData(String where, DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "DELETE FROM types WHERE " + where;
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeUpdate();
-        super.close();
+        dbConnection.close();
     }
 
-    @Override
-    public void updateData(int id, String newType) throws SQLException {
-        reopenConnection();
+    public void updateData(int id, String newType, DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "UPDATE types SET type = ? WHERE id = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, newType);
         preparedStatement.setInt(2, id);
         preparedStatement.executeUpdate();
-        super.close();
+        dbConnection.close();
     }
 
-    @Override
-    public void updateData(int id, String set, String where) throws SQLException {
-        reopenConnection();
-        sql = "UPDATE types SET " + set + " WHERE " + where;
+    public void updateData(int id, String set, String where, DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
+        sql = "UPDATE types SET " + set + " WHERE id = " + id + " AND " + where;
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeUpdate();
-        super.close();
+        dbConnection.close();
     }
 
-    public String getType(int id) throws SQLException {
-        reopenConnection();
+    public String getType(int id, DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "SELECT type FROM types WHERE id = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         resultSet = preparedStatement.executeQuery();
         String catType = resultSet.getString("type");
-        super.close();
+        dbConnection.close();
         return catType;
     }
 
-    public int getId(String type) throws SQLException {
-        reopenConnection();
+    public int getId(String type, DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "SELECT id FROM types WHERE type = ?;";
         preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, type);
         resultSet = preparedStatement.executeQuery();
         int id = resultSet.getInt("id");
-        super.close();
+        dbConnection.close();
         return id;
     }
 
-    public void getTypeWhere(String where) throws SQLException {
-        reopenConnection();
+    public void getTypeWhere(String where, DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "SELECT type FROM types WHERE " + where;
         preparedStatement = connection.prepareStatement(sql);
         resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             System.out.println(resultSet.getString("type"));
         }
-        super.close();
+        dbConnection.close();
     }
 
-    public void getAllTypes() throws SQLException {
-        reopenConnection();
+    public void getAllTypes(DBConnection dbConnection) throws SQLException {
+        connection = dbConnection.open();
         sql = "SELECT type FROM types";
         preparedStatement = connection.prepareStatement(sql);
         resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             System.out.println(resultSet.getString("type"));
         }
-        super.close();
+        dbConnection.close();
     }
 }

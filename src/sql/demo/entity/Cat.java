@@ -1,4 +1,4 @@
-package sql.demo.model;
+package sql.demo.entity;
 
 public class Cat extends BaseModel {
     private String name;
@@ -54,8 +54,35 @@ public class Cat extends BaseModel {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cat cat = (Cat) o;
+        return (super.getId() == cat.getId() &&
+                (this.name == cat.getName() ||
+                (this.name != null &&
+                cat.getName() != null &&
+                this.name.equals(cat.getName()))) &&
+                this.age == cat.getAge() &&
+                this.weight == cat.getWeight());
+    }
+
     @Override
     public String toString() {
-        return "Name: " + name + ". Type ID: " + typeId + ". Age: " + age + ". Weight: " + weight;
+        return "Name: " + name + ". Type ID: " + typeId + ". Age: " + age + ". Weight: " + weight + ".";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + super.getId();
+        result = prime * result + age;
+        result = prime * result + (int) weight;
+        result = prime * result + typeId;
+        return result;
     }
 }

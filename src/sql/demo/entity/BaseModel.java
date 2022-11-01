@@ -1,8 +1,8 @@
-package sql.demo.model;
+package sql.demo.entity;
 
 import java.util.Objects;
 
-public class BaseModel {
+public abstract class BaseModel {
 
     private int id;
 
