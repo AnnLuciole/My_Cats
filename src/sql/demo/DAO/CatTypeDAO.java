@@ -1,8 +1,7 @@
 package sql.demo.DAO;
 
 import sql.demo.config.DBConnection;
-import sql.demo.entity.BaseModel;
-import sql.demo.entity.CatType;
+import sql.demo.entity.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;

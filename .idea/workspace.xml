@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b90ec458-481c-4b39-9bac-4b830534b476" name="Changes" comment=" Нужно доделать">
-      <change afterPath="$PROJECT_DIR$/src/sql/demo/DAO/BaseTableDAO.java" afterDir="false" />
+    <list default="true" id="b90ec458-481c-4b39-9bac-4b830534b476" name="Changes" comment="Deleted close() metods for resultset and preparedstatement, 'cause this is always null.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/StockExchangeDB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/config/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/config/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/demo/DAO/CatTypeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/DAO/CatTypeDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sql/demo/config/SQLiteConnectionConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/config/SQLiteConnectionConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/dataBases/DBMyCats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/dataBases/DBMyCats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/dataBases/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/dataBases/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/model/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/entity/BaseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/model/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/entity/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/model/CatType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/entity/CatType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/BaseTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/CatTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/DAO/CatTypeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/Cats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/demo/DAO/CatDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/demo/repository/TableOperations.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666962222623</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="All fixed and working.">
+      <created>1667302916393</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1667302916393</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,7 +207,9 @@
     <MESSAGE value="Added deleteData, updateData metods for table cats." />
     <MESSAGE value="Added getCat, getCatWhere and getAllCats metods for table cats." />
     <MESSAGE value=" Нужно доделать" />
-    <option name="LAST_COMMIT_MESSAGE" value=" Нужно доделать" />
+    <MESSAGE value="All fixed and working." />
+    <MESSAGE value="Deleted close() metods for resultset and preparedstatement, 'cause this is always null." />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted close() metods for resultset and preparedstatement, 'cause this is always null." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
